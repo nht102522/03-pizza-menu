@@ -64,8 +64,8 @@ function Header() {
   );
 }
 function Menu() {
-  // const pizzas = pizzaData;
-  const pizzas = [];
+  const pizzas = pizzaData;
+  // const pizzas = [];
   const numPizza = pizzas.length;
   return (
     <main className="menu">
@@ -98,12 +98,12 @@ function Menu() {
 }
 function Pizza({ name, ingredients, price, photoName, soldOut }) {
   return (
-    <li className="pizza">
+    <li className={`pizza ${soldOut ? "sold-out" : ""}`}>
       <img src={photoName} alt={ingredients} />
       <div>
         <h3>{name}</h3>
         <p>{ingredients}</p>
-        <span>{price}</span>
+        {soldOut ? <span>SOLD OUT</span> : <span>{price}</span>}
       </div>
     </li>
   );
