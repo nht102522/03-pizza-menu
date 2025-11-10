@@ -125,7 +125,7 @@ function Footer() {
       {/* We're open until {new Date().toLocaleDateString()}. Come visit us or order
       online. */}
       {isOpen ? (
-        <Order closeHour={closeHour} />
+        <Order closeHour={closeHour} openHour={openHour} />
       ) : (
         <p>
           We're happy to welcome you between ⏰{openHour}:00 and {closeHour}:00
@@ -134,10 +134,13 @@ function Footer() {
     </footer>
   );
 }
-function Order({ closeHour }) {
+function Order({ closeHour, openHour }) {
   return (
     <div className="order">
-      <p>We're open until {closeHour}:00. Come visit us or order online.</p>
+      <p>
+        We're open at {openHour}:00 until {closeHour}:00. Come visit us or order
+        online.
+      </p>
       <button className="btn">Order</button>
     </div>
   );
