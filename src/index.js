@@ -64,37 +64,32 @@ function Header() {
   );
 }
 function Menu() {
-  const pizzas = pizzaData;
-  // const pizzas = [];
+  // const pizzas = pizzaData;
+  const pizzas = [];
   const numPizza = pizzas.length;
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      {/* <Pizza
-        name="Pizza Margheria"
-        ingredients="Tomato and mozarella"
-        photoName="pizzas/margherita.jpg"
-        price={10}
-      />
-      <Pizza
-        name="Pizza Salamino"
-        ingredients="Tomato, mozarella, and pepperoni"
-        photoName="pizzas/salamino.jpg"
-        price={15}
-      /> */}
+
       {numPizza > 0 ? (
-        <ul className="pizzas">
-          {pizzaData.map((p) => (
-            <Pizza
-              name={p.name}
-              ingredients={p.ingredients}
-              price={p.price}
-              photoName={p.photoName}
-              soldOut={p.soldOut}
-              key={p.name}
-            />
-          ))}
-        </ul>
+        <>
+          <p>
+            Authentic Italian cuisine. 6 creative dishes to choose from. All
+            from our stone oven, all organic, all delicoius.
+          </p>
+          <ul className="pizzas">
+            {pizzaData.map((p) => (
+              <Pizza
+                name={p.name}
+                ingredients={p.ingredients}
+                price={p.price}
+                photoName={p.photoName}
+                soldOut={p.soldOut}
+                key={p.name}
+              />
+            ))}
+          </ul>
+        </>
       ) : (
         <p>We're working on our menu. Please come back later 😘</p>
       )}
