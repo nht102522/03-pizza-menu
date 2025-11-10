@@ -65,6 +65,7 @@ function Header() {
 }
 function Menu() {
   const pizzas = pizzaData;
+  // const pizzas = [];
   const numPizza = pizzas.length;
   return (
     <main className="menu">
@@ -81,7 +82,7 @@ function Menu() {
         photoName="pizzas/salamino.jpg"
         price={15}
       /> */}
-      {numPizza > 0 && (
+      {numPizza > 0 ? (
         <ul className="pizzas">
           {pizzaData.map((p) => (
             <Pizza
@@ -94,6 +95,8 @@ function Menu() {
             />
           ))}
         </ul>
+      ) : (
+        <p>We're working on our menu. Please come back later 😘</p>
       )}
     </main>
   );
@@ -114,22 +117,22 @@ function Footer() {
   const hour = new Date().getHours();
   console.log(hour);
   const openHour = 10;
-  const closeHour = 24;
+  const closeHour = 22;
   const isOpen = hour >= openHour && hour <= closeHour;
-  // if (isOpen) {
-  //   alert("Welcome to React Pizza");
-  // } else {
-  //   alert("Sorry! We are close!");
-  // }
+
   return (
     <footer className="menu">
       {/* We're open until {new Date().toLocaleDateString()}. Come visit us or order
       online. */}
-      {isOpen && (
+      {isOpen ? (
         <div className="order">
           <p>We're open until {closeHour}:00. Come visit us or order online.</p>
           <button className="btn">Order</button>
         </div>
+      ) : (
+        <p>
+          We're happy to welcome you between ⏰{openHour}:00 and {closeHour}:00
+        </p>
       )}
     </footer>
   );
