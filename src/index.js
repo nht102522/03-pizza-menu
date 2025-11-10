@@ -64,6 +64,8 @@ function Header() {
   );
 }
 function Menu() {
+  const pizzas = pizzaData;
+  const numPizza = pizzas.length;
   return (
     <main className="menu">
       <h2>Our Menu</h2>
@@ -79,21 +81,24 @@ function Menu() {
         photoName="pizzas/salamino.jpg"
         price={15}
       /> */}
-      <ul className="pizzas">
-        {pizzaData.map((p) => (
-          <Pizza
-            name={p.name}
-            ingredients={p.ingredients}
-            price={p.price}
-            photoName={p.photoName}
-            key={p.name}
-          />
-        ))}
-      </ul>
+      {numPizza > 0 && (
+        <ul className="pizzas">
+          {pizzaData.map((p) => (
+            <Pizza
+              name={p.name}
+              ingredients={p.ingredients}
+              price={p.price}
+              photoName={p.photoName}
+              soldOut={p.soldOut}
+              key={p.name}
+            />
+          ))}
+        </ul>
+      )}
     </main>
   );
 }
-function Pizza({ name, ingredients, price, photoName }) {
+function Pizza({ name, ingredients, price, photoName, soldOut }) {
   return (
     <li className="pizza">
       <img src={photoName} alt={ingredients} />
@@ -109,8 +114,7 @@ function Footer() {
   const hour = new Date().getHours();
   console.log(hour);
   const openHour = 10;
-
-  const closeHour = 22;
+  const closeHour = 24;
   const isOpen = hour >= openHour && hour <= closeHour;
   // if (isOpen) {
   //   alert("Welcome to React Pizza");
@@ -119,8 +123,14 @@ function Footer() {
   // }
   return (
     <footer className="menu">
-      We're open until {new Date().toLocaleDateString()}. Come visit us or order
-      online.
+      {/* We're open until {new Date().toLocaleDateString()}. Come visit us or order
+      online. */}
+      {isOpen && (
+        <div className="order">
+          <p>We're open until {closeHour}:00. Come visit us or order online.</p>
+          <button className="btn">Order</button>
+        </div>
+      )}
     </footer>
   );
 }
